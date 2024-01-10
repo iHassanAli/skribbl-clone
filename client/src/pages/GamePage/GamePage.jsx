@@ -26,7 +26,8 @@ export default function GamePage() {
     setIsTurnOver,
     isTurnOver,
     isGameOver,
-    setIsGameOver
+    setIsGameOver,
+    setIsAllowedToDraw,
   } = useContext(GameContext);
   const { startDrawing, draw, finishDrawing, setIsDrawing, clearCanvas } =
     useContext(CanvasContext);
@@ -80,6 +81,7 @@ export default function GamePage() {
     })
     socket.on("turn_over", ()=>{
       setIsTurnOver(true);
+      setIsAllowedToDraw(false);
     })
     socket.on("game_over", ()=>{
       setIsGameOver(true);
